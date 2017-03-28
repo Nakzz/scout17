@@ -1,0 +1,8 @@
+*~
+docs/*.eml
+docs/db_sec.txt
+docs/db_sec.txt.gpg
+app/infodb.php
+build/app/*
+build/db/*
+db/backup/*
