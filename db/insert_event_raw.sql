@@ -1,4 +1,4 @@
-USE _scout16_;
+USE _scout17_;
 
 INSERT event
 (name, code, week)
