@@ -2,13 +2,13 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-CREATE SCHEMA IF NOT EXISTS `_scout16_` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
-USE `_scout16_` ;
+CREATE SCHEMA IF NOT EXISTS `_scout17_` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
+USE `_scout17_` ;
 
 -- -----------------------------------------------------
 -- Table `event`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `_scout16_`.`event` (
+CREATE  TABLE IF NOT EXISTS `_scout17_`.`event` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL ,
   `code` VARCHAR(10) NULL ,
@@ -19,7 +19,7 @@ ENGINE = MyISAM;
 -- -----------------------------------------------------
 -- Table `team`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `_scout16_`.`team` (
+CREATE  TABLE IF NOT EXISTS `_scout17_`.`team` (
   `id` SMALLINT(6) NOT NULL ,
   `name` VARCHAR(128) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL ,
   `nick` VARCHAR(128) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL ,
@@ -35,7 +35,7 @@ COLLATE = utf8_unicode_ci;
 -- -----------------------------------------------------
 -- Table `match_`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `_scout16_`.`match_` (
+CREATE  TABLE IF NOT EXISTS `_scout17_`.`match_` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `event_id` INT(11) NOT NULL ,
   `type_` varchar(10) NOT NULL,
@@ -46,15 +46,6 @@ CREATE  TABLE IF NOT EXISTS `_scout16_`.`match_` (
   `blue_team1_id` SMALLINT(6) NOT NULL ,
   `blue_team2_id` SMALLINT(6) NOT NULL ,
   `blue_team3_id` SMALLINT(6) NOT NULL ,
-  
-  `red_def2` VARCHAR(20) NULL ,
-  `red_def3` VARCHAR(20) NULL ,
-  `red_def4` VARCHAR(20) NULL ,
-  `red_def5` VARCHAR(20) NULL ,
-  `blue_def2` VARCHAR(20) NULL ,
-  `blue_def3` VARCHAR(20) NULL ,
-  `blue_def4` VARCHAR(20) NULL ,
-  `blue_def5` VARCHAR(20) NULL ,
   
   PRIMARY KEY (`id`) ,
   INDEX `fk_match__event_idx` (`event_id` ASC) ,
@@ -71,7 +62,7 @@ COLLATE = utf8_unicode_ci;
 -- -----------------------------------------------------
 -- Table `match_result`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `_scout16_`.`match_result` (
+CREATE  TABLE IF NOT EXISTS `_scout17_`.`match_result` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `event_id` INT(11) NOT NULL ,
   `type_` varchar(10) NOT NULL,
@@ -134,39 +125,34 @@ COLLATE = utf8_unicode_ci;
 -- -----------------------------------------------------
 -- Table `stat`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `_scout16_`.`stat` (
+CREATE  TABLE IF NOT EXISTS `_scout17_`.`stat` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `team_id` SMALLINT(6) NOT NULL ,
   `match__id` INT(11) NOT NULL ,
 
-  `auto_position` TINYINT(4) NULL ,
-  `auto_reach_defense` TINYINT(1) NULL ,
-  `auto_cross_defense` TINYINT(1) NULL ,
-  `auto_low_goal` TINYINT(4) NULL ,
-  `auto_high_goal` TINYINT(4) NULL ,
+  `auto_cross_line` TINYINT(3) NULL ,
+  `auto_gear_left` TINYINT(3) NULL ,
+  `auto_gear_center` TINYINT(3) NULL ,
+  `auto_gear_right` TINYINT(3) NULL ,
+  `auto_fuel_low` TINYINT(3) NULL ,
+  `auto_fuel_high` TINYINT(3) NULL ,
 
-  `cross_low_bar` TINYINT(4) NULL DEFAULT NULL,
-  `cross_defense2` TINYINT(4) NULL DEFAULT NULL ,
-  `cross_defense3` TINYINT(4) NULL DEFAULT NULL ,
-  `cross_defense4` TINYINT(4) NULL DEFAULT NULL ,
-  `cross_defense5` TINYINT(4) NULL DEFAULT NULL ,
-  `open_defense2` TINYINT(4) NULL DEFAULT NULL ,
-  `open_defense3` TINYINT(4) NULL DEFAULT NULL ,
-  `open_defense4` TINYINT(4) NULL DEFAULT NULL ,
-  `open_defense5` TINYINT(4) NULL DEFAULT NULL ,
+  `teleop_gears` TINYINT(3) NULL DEFAULT NULL,
+  `teleop_fuel_low` TINYINT(3) NULL DEFAULT NULL ,
+  `teleop_fuel_high` TINYINT(3) NULL DEFAULT NULL ,
+  `teleop_climb` TINYINT(3) NULL DEFAULT NULL ,
 
-  `pick_boulder` TINYINT(4) NULL DEFAULT NULL ,
-  `pass_boulder` TINYINT(4) NULL DEFAULT NULL ,
-  
-  `score_low` TINYINT(4) NULL DEFAULT NULL ,
-  `score_high` TINYINT(4) NULL DEFAULT NULL ,
+  `floor_gear_pickup` TINYINT(3) NULL DEFAULT NULL ,
+  `floor_ball_pickup` TINYINT(3) NULL DEFAULT NULL ,
+  `defense` TINYINT(3) NULL,
+  `load_from_hopper` TINYINT(3) NULL,
 
-  `get_on_tower` TINYINT(4) NULL DEFAULT NULL ,
-  `climb_tower` TINYINT(4) NULL DEFAULT NULL ,
+  `fouls` TINYINT(3) NULL,
+  `tech_fouls` TINYINT(3) NULL,
+  `died` TINYINT(3) NULL,
 
-  `defense` TINYINT(1) NULL,
-  `fouls` TINYINT(4) NULL,
-  `died` TINYINT NULL,
+  `free_description` VARCHAR(255) NULL,
+
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   INDEX `fk_stat_team1_idx` (`team_id` ASC) ,
@@ -178,7 +164,7 @@ COLLATE = utf8_unicode_ci;
 -- -----------------------------------------------------
 -- Table `flat_stat`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `_scout16_`.`flat_stat` (
+CREATE  TABLE IF NOT EXISTS `_scout17_`.`flat_stat` (
   `id` INT(11) NOT NULL ,
 
   `had_portcullis` TINYINT(4) NULL DEFAULT NULL ,
@@ -217,7 +203,7 @@ COLLATE = utf8_unicode_ci;
 -- -----------------------------------------------------
 -- Table `current_`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `_scout16_`.`current_` (
+CREATE  TABLE IF NOT EXISTS `_scout17_`.`current_` (
   `event_code` VARCHAR(10) NULL ,
   `match_type` VARCHAR(10) NULL ,
   `match_number` TINYINT NULL ,
@@ -232,18 +218,18 @@ CREATE USER `_app_` IDENTIFIED BY '_password_';
 grant SELECT, UPDATE and INSERT to the app account in cpanel because
 the commands below do not work.
 
-grant SELECT on TABLE `_scout16_`.`event` to `_app_`;
-grant UPDATE on TABLE `_scout16_`.`event` to `_app_`;
-grant INSERT on TABLE `_scout16_`.`event` to `_app_`;
-grant INSERT on TABLE `_scout16_`.`match_` to `_app_`;
-grant SELECT on TABLE `_scout16_`.`match_` to `_app_`;
-grant UPDATE on TABLE `_scout16_`.`match_` to `_app_`;
-grant INSERT on TABLE `_scout16_`.`stat` to `_app_`;
-grant SELECT on TABLE `_scout16_`.`stat` to `_app_`;
-grant UPDATE on TABLE `_scout16_`.`stat` to `_app_`;
-grant INSERT on TABLE `_scout16_`.`team` to `_app_`;
-grant SELECT on TABLE `_scout16_`.`team` to `_app_`;
-grant UPDATE on TABLE `_scout16_`.`team` to `_app_`;
+grant SELECT on TABLE `_scout17_`.`event` to `_app_`;
+grant UPDATE on TABLE `_scout17_`.`event` to `_app_`;
+grant INSERT on TABLE `_scout17_`.`event` to `_app_`;
+grant INSERT on TABLE `_scout17_`.`match_` to `_app_`;
+grant SELECT on TABLE `_scout17_`.`match_` to `_app_`;
+grant UPDATE on TABLE `_scout17_`.`match_` to `_app_`;
+grant INSERT on TABLE `_scout17_`.`stat` to `_app_`;
+grant SELECT on TABLE `_scout17_`.`stat` to `_app_`;
+grant UPDATE on TABLE `_scout17_`.`stat` to `_app_`;
+grant INSERT on TABLE `_scout17_`.`team` to `_app_`;
+grant SELECT on TABLE `_scout17_`.`team` to `_app_`;
+grant UPDATE on TABLE `_scout17_`.`team` to `_app_`;
  */
 
 SET SQL_MODE=@OLD_SQL_MODE;

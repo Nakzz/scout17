@@ -1,6 +1,6 @@
-USE _scout16_;
+USE _scout17_;
 
 INSERT current_
 (event_code, match_type, match_number, last_saved_result)
 VALUES
-('WAAMV', 'practice', 1, 0);
+('NYSU', 'practice', 1, 0);

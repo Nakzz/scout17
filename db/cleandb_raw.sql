@@ -1,3 +1,3 @@
 DROP user _app_;
 
-DROP DATABASE _scout16_;
+DROP DATABASE _scout17;

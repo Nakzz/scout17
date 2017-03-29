@@ -13,11 +13,11 @@ IF NOT DEFINED pswd (
     exit /b 2
 )
 
-SET /p appdir=Enter remote application directory (www/scout16):  
-IF NOT DEFINED appdir (set appdir=www/scout16)
+SET /p appdir=Enter remote application directory (www/scout17):  
+IF NOT DEFINED appdir (set appdir=www/scout17)
 
-SET /p confdir=Enter remote config area (dev/scout16): 
-IF NOT DEFINED confdir (set confdir=dev/scout16)
+SET /p confdir=Enter remote config area (dev/scout17): 
+IF NOT DEFINED confdir (set confdir=dev/scout17)
 
 pscp -P 2222 -pw %pswd% -sftp -r app/* %login%:%appdir%
 pscp -P 2222 -pw %pswd% -sftp -r db/* %login%:%confdir%

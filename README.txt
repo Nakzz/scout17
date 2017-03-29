@@ -12,24 +12,24 @@ Create dba user in cpanel (let them pick the password)
 Add dba user to database in cpanel
 Add app user to database in cpanel
 On the server create the *application directory* in a directory
- served by a web server (~/www/scout16) with php working
-And the *config directory* somewhere else not served (~/dev/scout16)
+ served by a web server (~/www/scout17) with php working
+And the *config directory* somewhere else not served (~/dev/scout17)
 
 On your development machine run
 build/clean.bat
 On your web server run (if already deployed)
-~/dev/scout16/clean.sh
+~/dev/scout17/clean.sh
 On your development machine run
 build/build.bat
 build/deploy.bat
 On your web server
-cd ~/dev/scout16
+cd ~/dev/scout17
 chmod u+x configure.sh
 chmod u+x clean.sh
 chmod u+x deploy.sh
 ./configure.sh
-mysql --user=teamadmn_dba --password=dba_pass teamadmn_scout16 < createdb.sql > createdb.log
-mysql --user=teamadmn_app --password='app_pass' teamadmn_scout16 < insert_event.sql > insert_event.log
+mysql --user=teamadmn_dba --password=dba_pass teamadmn_scout17 < createdb.sql > createdb.log
+mysql --user=teamadmn_app --password='app_pass' teamadmn_scout17 < insert_event.sql > insert_event.log
 
 
 =================
@@ -39,7 +39,7 @@ On your development machine from the root of the project run
 cd build
 clean.bat
 On your web server run (if already deployed)
-cd ~/dev/scout16
+cd ~/dev/scout17
 ./clean.sh
 On your development machine run (still in the build directory)
 build.bat
