@@ -9,25 +9,18 @@ var stats = {
   auto_fuel_low: 0,
   auto_fuel_high: 0,
 
-  cross_low_bar: 0,
-  cross_def2: 0,
-  cross_def3: 0,
-  cross_def4: 0,
-  cross_def5: 0,
-  open_def2: 0,
-  open_def3: 0,
-  open_def4: 0,
-  open_def5: 0,
-  pick_ball: 0,
-  pass_ball: 0,
-  
-  score_low: 0,
-  score_high: 0,
-  reach_twr: 0,
-  climb_twr: 0,
+  gears: 0,
+  fuel_low: 0,
+  fuel_high: 0,
+  climb: 0,
 
+  floor_gear: 0,
+  floor_ball: 0,
   defense: 0,
+  load_hopper: 0,
+  
   fouls: 0,
+  tech_fouls: 0,
   died: 0
   
 };

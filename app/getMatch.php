@@ -6,19 +6,17 @@
  
 require_once 'infodb.php';
 
-$db_server = mysql_connect($db_hostname, $db_username , $db_password);
+$mysqli = new mysqli($db_hostname, $db_username , $db_password, $db_database);
 
-if (!$db_server) die("Unable to connect to MySQL: " . mysql_error());
-
-mysql_select_db($db_database) or
-  die("Unable to select database: " . mysql_error());
+if ($mysqli->connect_errno) 
+  die("Unable to connect to MySQL: " 
+    . $mysqli->connect_errno . " " 
+    . $mysqli->connect_error);
 
 $query = "SELECT m.id, m.event_id, e.name "
          . "  , e.code, m.type_, m.number_ "
          . "  , m.red_team1_id, m.red_team2_id, m.red_team3_id "
          . "  , blue_team1_id, blue_team2_id, blue_team3_id "
-         . "  , red_def2, red_def3, red_def4, red_def5 "
-         . "  , blue_def2, blue_def3, blue_def4, blue_def5 "
          . "FROM match_ m "
          . "  JOIN current_ c "
          . "    ON  m.number_ = c.match_number "
@@ -27,10 +25,13 @@ $query = "SELECT m.id, m.event_id, e.name "
          . "    ON c.event_code = e.code "
          . "      AND e.id = m.event_id "; 
 
-$result = mysql_query($query);
-
+$result = $mysqli->query($query);
+$row = $result->fetch_assoc();
 //echo "<p>$query</p>"; //debug
-if (!$result) die("Database access failed: " . mysql_error());
+// if (!$result) 
+//   die("Query failed: "
+//     . $mysqli->connect_errno . " " 
+//     . $mysqli->connect_error);
 
 //TODO: check that we get one row and only one row
 //TODO : how do I return the error to the front-end?  
@@ -38,26 +39,18 @@ if (!$result) die("Database access failed: " . mysql_error());
 //  with no rows in the table 
 //TODO: should figure out how the first match gets inserted
 $match = array(
-  'id' => mysql_result($result, 0, 'id')
-  , 'event_id' => mysql_result($result, 0, 'event_id')
-  , 'event_name' => mysql_result($result, 0, 'name')
-  , 'event_code' => mysql_result($result, 0, 'code')
-  , 'match_type' => mysql_result($result, 0, 'type_')
-  , 'number_' => mysql_result($result, 0, 'number_')
-  , 'red_team1_id' => mysql_result($result, 0, 'red_team1_id')
-  , 'red_team2_id' => mysql_result($result, 0, 'red_team2_id')
-  , 'red_team3_id' => mysql_result($result, 0, 'red_team3_id')
-  , 'blue_team1_id' => mysql_result($result, 0, 'blue_team1_id')
-  , 'blue_team2_id' => mysql_result($result, 0, 'blue_team2_id')
-  , 'blue_team3_id' => mysql_result($result, 0, 'blue_team3_id')
-  , 'red_def2' => mysql_result($result, 0, 'red_def2')
-  , 'red_def3' => mysql_result($result, 0, 'red_def3')
-  , 'red_def4' => mysql_result($result, 0, 'red_def4')
-  , 'red_def5' => mysql_result($result, 0, 'red_def5')
-  , 'blue_def2' => mysql_result($result, 0, 'blue_def2')
-  , 'blue_def3' => mysql_result($result, 0, 'blue_def3')
-  , 'blue_def4' => mysql_result($result, 0, 'blue_def4')
-  , 'blue_def5' => mysql_result($result, 0, 'blue_def5')
+  'id' => $row['id']
+  , 'event_id' => $row['event_id']
+  , 'event_name' => $row['name']
+  , 'event_code' => $row['code']
+  , 'match_type' => $row['type_']
+  , 'number_' => $row['number_']
+  , 'red_team1_id' => $row['red_team1_id']
+  , 'red_team2_id' => $row['red_team2_id']
+  , 'red_team3_id' => $row['red_team3_id']
+  , 'blue_team1_id' => $row['blue_team1_id']
+  , 'blue_team2_id' => $row['blue_team2_id']
+  , 'blue_team3_id' => $row['blue_team3_id']
 );
 
 echo json_encode($match); 

@@ -28,6 +28,7 @@ chmod u+x configure.sh
 chmod u+x clean.sh
 chmod u+x deploy.sh
 ./configure.sh
+./deploy.sh
 mysql --user=teamadmn_dba --password=dba_pass teamadmn_scout17 < createdb.sql > createdb.log
 mysql --user=teamadmn_app --password='app_pass' teamadmn_scout17 < insert_event.sql > insert_event.log
 
@@ -138,7 +139,9 @@ TODO
     If a team gets picked before we pick them, take them off the list.
 
 Medium Priority
-a) convert README.txt to README.md
+7.51) convert README.txt to README.md
+7.52) switch loadMatches.php, saveCurrent.php to sqli
+7.53) adminMenu.php and loadSchedule.html have hard-coded event lists
 
 7) figure out how the first row is to be inserted into current_;
 8) report.html should be dynamically generated (i.e. php)
@@ -149,7 +152,6 @@ a) convert README.txt to README.md
 
 Low Priority
 7.101) remove recompute_flat_stat() from saveCurrent.php if not used
-7.102) have front-end to load matches
 
 101) Use Angular.js
 102) Prevent event matches from loading a second time.

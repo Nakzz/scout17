@@ -84,7 +84,7 @@ function save_match($event_id, $match_type, $match_id
 }
 
 function build_url($event_code, $match_type) {
-  return 'http://frc-events.usfirst.org/2016/' . $event_code
+  return 'https://frc-events.firstinspires.org/2017/' . $event_code
     . '/' . $match_type ; 
 }
 

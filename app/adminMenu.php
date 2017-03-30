@@ -19,12 +19,10 @@
       . "<option>D_RockWall</option>\n"
       . "<option>D_RoughTerrain</option>\n";
       
-    $event_code_opt = 
-      "<option>NYLI</option>\n"
-	  . "<option>NYNY</option>\n"
-      . "<option>NYTR</option>\n"
-      . "<option>WAAMV</option>\n"
-      . "<option>SCMB</option>\n";
+    $event_code_opt =
+      "<option>NYRO</option>\n"
+	    . "<option>NYSU</option>\n"
+      . "<option>NYLI</option>\n";
   ?>
 
   <body>
