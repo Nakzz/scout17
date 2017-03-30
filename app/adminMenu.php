@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Scout 16: Admin menu</title>
+    <title>Scout 17: Admin menu</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,9 +33,6 @@
       <ul class="nav nav-tabs" id="adminTab">
         <li class="active">
           <a href="#setcurrent" data-toggle="tab">Set Current</a>
-        </li>
-        <li>
-          <a href="#setdefenses" data-toggle="tab">Set Defenses</a>
         </li>
       </ul>
 
@@ -87,85 +84,6 @@
             </button>
           </div> <!--right column setcurrent tab-pane -->
         </div> <!--setcurrent tab-pane -->
-        <div class="tab-pane" id="setdefenses">
-          <div id="side">
-            <div class="panel panel-danger">
-              <div class="panel-heading">Red</div>
-              <div class="panel-body">
-                <div class="form-group">
-                  <label for="red_def5">Defense 5</label>
-                  <select class="form-control" id="red_def5">
-                    <?php echo $def_opt_str; ?>
-                  </select>
-                </div> <!--red_def5 form-group-->
-                <div class="form-group">
-                  <label for="red_def4">Defense 4</label>
-                  <select class="form-control" id="red_def4">
-                    <?php echo $def_opt_str; ?>
-                  </select>
-                </div> <!--red_def4 form-group-->
-                <div class="form-group">
-                  <label for="red_def3">Defense 3</label>
-                  <select class="form-control" id="red_def3">
-                    <?php echo $def_opt_str; ?>
-                  </select>
-                </div> <!--red_def3 form-group-->
-                <div class="form-group">
-                  <label for="red_def2">Defense 2</label>
-                  <select class="form-control" id="red_def2">
-                    <?php echo $def_opt_str; ?>
-                  </select>
-                </div> <!--red_def2 form-group-->
-                <label>Low Bar</label>
-              </div> <!-- end red panel body-->
-            </div> <!-- end red panel -->
-          </div> <!--left column setdefenses tab-pane -->
-          <div id="center">
-              <input id="match_nr_lbl" type="number" class="form-control" 
-                placeholder="Match #" disabled="true">
-              <input id="event_cd_lbl" class="form-control" 
-                placeholder="Event Code" disabled="true">
-              <input id="match_type_lbl" class="form-control" 
-                placeholder="Match Type" disabled="true">
-              <button type="button" id="cur_save" class="btn btn-danger btn-lg btn-block" 
-                onclick="updateDefenses()">
-              Update Defenses
-            </button>
-
-          </div> <!--center column setdefenses tab-pane -->
-          <div id="side">
-            <div class="panel panel-info">
-              <div class="panel-heading">Blue</div>
-              <div class="panel-body">
-                <label>Low Bar</label>
-                <div class="form-group">
-                  <label for="blue_def2">Blue Def 2</label>
-                  <select class="form-control" id="blue_def2">
-                    <?php echo $def_opt_str; ?>
-                  </select>
-                </div> <!--blue_def2 form-group-->
-                <div class="form-group">
-                  <label for="blue_def3">Blue Def 3</label>
-                  <select class="form-control" id="blue_def3">
-                    <?php echo $def_opt_str; ?>
-                  </select>
-                </div> <!--blue_def3 form-group-->
-                <div class="form-group">
-                  <label for="blue_def4">Blue Def 4</label>
-                  <select class="form-control" id="blue_def4">
-                    <?php echo $def_opt_str; ?>
-                  </select>
-                </div> <!--blue_def4 form-group-->
-                <div class="form-group">
-                  <label for="blue_def5">Blue Def 5</label>
-                  <select class="form-control" id="blue_def5">
-                    <?php echo $def_opt_str; ?>
-                  </select>
-                </div> <!--blue def5 form-group-->
-              </div> <!-- end blue panel body-->
-            </div> <!-- end blue (panel-info) panel -->
-          </div> <!--left column setdefenses tab-pane -->
-        </div> <!--setdefenses tab-pane-->  
       <div> <!--tab-content-->
       <div id="info" class="panel panel-default"></div>
       </div> <!--info panel at bottom-->

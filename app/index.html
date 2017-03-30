@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Scout 16: Enter match statistics</title>
+    <title>Scout 17: Enter match statistics</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,32 +75,37 @@
 
         <div class="tab-pane" id="auto">
           <div id="side">
-            <button type="button" id="auto_position_btn" class="btn btn-default btn-lg btn-block" 
-             onclick="increase('auto_position')">
-               Position 
-               <span id="auto_position_badge" class="badge">1</span>
+            <button type="button" id="auto_cross_line_btn" class="btn btn-default btn-lg btn-block" 
+             onclick="increase('auto_cross_line')">
+               Cross Line 
             </button>
-            <button type="button" id="auto_reach_btn" class="btn btn-default btn-lg btn-block" 
-            onclick="increase('auto_reach')">
-               Reach Defense 
+            <button type="button" id="auto_gear_left_btn" class="btn btn-default btn-lg btn-block" 
+            onclick="increase('auto_gear_left')">
+               Gear Left 
             </button>
           </div> <!--left column auto tab-pane -->
           <div id="center">
-            <button type="button" id="auto_cross_btn" class="btn btn-default btn-lg btn-block" 
-             onclick="increase('auto_cross')">
-               Cross Defense 
+            <button type="button" id="auto_gear_center_btn" class="btn btn-default btn-lg btn-block" 
+             onclick="increase('auto_gear_center')">
+               Gear Center 
             </button>
           </div> <!--center column auto tab-pane -->
           <div id="side">
-            <button type="button" id="auto_low_btn" class="btn btn-default btn-lg btn-block" 
-             onclick="increase('auto_low')">
-               Low Goal
+            <button type="button" id="auto_gear_right_btn" class="btn btn-default btn-lg btn-block" 
+             onclick="increase('auto_gear_right')">
+               Gear Right
             </button>
-            <button type="button" id="auto_high_btn" class="btn btn-default btn-lg btn-block" 
-             onclick="increase('auto_high')">
-               High Goal 
+            <button type="button" id="auto_fuel_low_btn" class="btn btn-default btn-lg btn-block" 
+             onclick="increase('auto_fuel_low')">
+               Fuel Low
+               <span id="auto_fuel_low_badge" class="badge">0</span> 
             </button>
-             <button type="button" id="undo_auto" class="btn btn-danger btn-lg btn-block" 
+            <button type="button" id="auto_fuel_high_btn" class="btn btn-default btn-lg btn-block" 
+             onclick="increase('auto_fuel_high')">
+               Fuel High 
+               <span id="auto_fuel_high_badge" class="badge">0</span>
+            </button>
+            <button type="button" id="undo_auto" class="btn btn-danger btn-lg btn-block" 
              onclick="undo()">
                Undo
              </button>
@@ -109,99 +114,63 @@
 
         <div class="tab-pane" id="tele">
           <div id="side">
-            <button type="button" id="cross_low_bar_btn" class="btn btn-default btn-lg btn-block" 
-             onclick="increase('cross_low_bar')">
-               Cross<br>Low Bar
-               <span id="cross_low_bar_badge" class="badge">0</span>
+            <button type="button" id="gears_btn" class="btn btn-default btn-lg btn-block" 
+             onclick="increase('gears')">
+               Gears
+               <span id="gears_badge" class="badge">0</span>
              </button> 
-            <button type="button" id="cross_def2_btn" class="btn btn-default btn-lg btn-block" 
-            onclick="increase('cross_def2')">
-               Cross<br>Def 2
-               <span id="cross_def2_badge" class="badge">0</span>
+            <button type="button" id="fuel_low_btn" class="btn btn-default btn-lg btn-block" 
+            onclick="increase('fuel_low')">
+               Fuel Low
+               <span id="fuel_low_badge" class="badge">0</span>
              </button> 
-            <button type="button" id="cross_def3_btn" class="btn btn-default btn-lg btn-block" 
-             onclick="increase('cross_def3')">
-               Cross<br>Def 3
-               <span id="cross_def3_badge" class="badge">0</span>
+            <button type="button" id="fuel_high_btn" class="btn btn-default btn-lg btn-block" 
+             onclick="increase('fuel_high')">
+               Fuel High
+               <span id="fuel_high_badge" class="badge">0</span>
              </button> 
-            <button type="button" id="cross_def4_btn" class="btn btn-default btn-lg btn-block" 
-            onclick="increase('cross_def4')">
-               Cross<br>Def 4
-               <span id="cross_def4_badge" class="badge">0</span>
+            <button type="button" id="climb_btn" class="btn btn-default btn-lg btn-block" 
+            onclick="increase('climb')">
+               Climb
              </button> 
-            <button type="button" id="cross_def5_btn" class="btn btn-default btn-lg btn-block" 
-            onclick="increase('cross_def5')">
-               Cross<br>Def 5
-               <span id="cross_def5_badge" class="badge">0</span>
+            <button type="button" id="floor_gear_btn" class="btn btn-default btn-lg btn-block" 
+            onclick="increase('floor_gear')">
+               Floor Gear
+               <span id="floor_gear_badge" class="badge">0</span>
              </button> 
+            <button type="button" id="floor_ball_btn" class="btn btn-default btn-lg btn-block" 
+             onclick="increase('floor_ball')">
+               Floor Ball
+               <span id="floor_ball_badge" class="badge">0</span>
+             </button> 
+          </div> <!--left column tele tab-pane -->
+          <div id="center">
             <button type="button" id="defense_btn" class="btn btn-default btn-lg btn-block" 
              onclick="increase('defense')">
                Defense
                <span id="defense_badge" class="badge">0</span>
-             </button> 
-          </div> <!--left column tele tab-pane -->
-          <div id="center">
-            <button type="button" id="pick_ball_btn" class="btn btn-default btn-lg btn-block" 
-             onclick="increase('pick_ball')">
-               Pick<br>Ball
-               <span id="pick_ball_badge" class="badge">0</span>
             </button> 
-            <button type="button" id="open_def2_btn" class="btn btn-default btn-lg btn-block" 
-             onclick="increase('open_def2')">
-               Open<br>Def 2
-               <span id="open_def2_badge" class="badge">0</span>
+            <button type="button" id="load_hopper_btn" class="btn btn-default btn-lg btn-block" 
+             onclick="increase('load_hopper')">
+               Load From<br>Hopper
+               <span id="load_hopper_badge" class="badge">0</span>
             </button> 
-            <button type="button" id="open_def3_btn" class="btn btn-default btn-lg btn-block" 
-             onclick="increase('open_def3')">
-               Open<br>Def 3
-               <span id="open_def3_badge" class="badge">0</span>
-            </button> 
-            <button type="button" id="open_def4_btn" class="btn btn-default btn-lg btn-block" 
-             onclick="increase('open_def4')">
-               Open<br>Def 4
-               <span id="open_def4_badge" class="badge">0</span>
-            </button> 
-            <button type="button" id="open_def5_btn" class="btn btn-default btn-lg btn-block" 
-             onclick="increase('open_def5')">
-               Open<br>Def 5
-               <span id="open_def5_badge" class="badge">0</span>
-            </button> 
+          </div> <!--center column tele tab-pane -->
+          <div id="side">
             <button type="button" id="fouls_btn" class="btn btn-default btn-lg btn-block" 
              onclick="increase('fouls')">
                Fouls
                <span id="fouls_badge" class="badge">0</span>
-            </button> 
-          </div> <!--center column tele tab-pane -->
-          <div id="side">
-            <button type="button" id="pass_ball_btn" class="btn btn-default btn-lg btn-block" 
-             onclick="increase('pass_ball')">
-               Pass<br>Ball
-               <span id="pass_ball_badge" class="badge">0</span>
              </button> 
-            <button type="button" id="score_low_btn" class="btn btn-default btn-lg btn-block" 
-             onclick="increase('score_low')">
-               Score<br>Low
-               <span id="score_low_badge" class="badge">0</span>
-             </button> 
-            <button type="button" id="score_high_btn" class="btn btn-default btn-lg btn-block" 
-             onclick="increase('score_high')">
-               Score<br>High
-               <span id="score_high_badge" class="badge">0</span>
+            <button type="button" id="tech_fouls_btn" class="btn btn-default btn-lg btn-block" 
+             onclick="increase('tech_fouls')">
+               Tech Fouls
+               <span id="tech_fouls_badge" class="badge">0</span>
              </button> 
             <button type="button" id="died_btn" class="btn btn-default btn-lg btn-block" 
              onclick="increase('died')">
                Died
                <span id="died_badge" class="badge">0</span>
-             </button> 
-            <button type="button" id="reach_twr_btn" class="btn btn-default btn-lg btn-block" 
-             onclick="increase('reach_twr')">
-               Reach<br>Twr
-               <span id="reach_twr_badge" class="badge">0</span>
-             </button> 
-            <button type="button" id="climb_twr_btn" class="btn btn-default btn-lg btn-block" 
-             onclick="increase('climb_twr')">
-               Climb<br>Twr
-               <span id="climb_twr_badge" class="badge">0</span>
              </button> 
              <button type="button" id="undo_tele" class="btn btn-danger btn-lg btn-block" 
               onclick="undo()">

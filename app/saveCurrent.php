@@ -36,7 +36,7 @@ $result = mysql_query($query);
 //echo "<p>$query</p>"; //debug
 if (!$result) die("Current match update failed: " . mysql_error());
 
-recompute_flat_stat();
+//recompute_flat_stat(); //TODO: revisit if 17 needs this
 
 echo "<p>Event code $cur_event_cd, match type $cur_match_type"
   . " and match number $cur_match_nr are now the current defaults.</p>"; 

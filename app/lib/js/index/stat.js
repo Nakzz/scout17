@@ -2,11 +2,12 @@ var team_id;
 var match__id;
  
 var stats = {
-  auto_position: 1,
-  auto_reach: 0,
-  auto_cross: 0,
-  auto_low: 0,
-  auto_high: 0,
+  auto_cross_line: 0,
+  auto_gear_left: 0,
+  auto_gear_center: 0,
+  auto_gear_right: 0,
+  auto_fuel_low: 0,
+  auto_fuel_high: 0,
 
   cross_low_bar: 0,
   cross_def2: 0,
@@ -119,10 +120,7 @@ function saveAndReset() {
   }
   match__id = 0;
   team_id = 0;
-  stats['auto_position'] = 1;
   document.getElementById("team_id").value = '';
-  document.getElementById("auto_position_badge").innerHTML = 1;
 
-  getCurrentGame();
- 
+  getCurrentGame(); 
 }

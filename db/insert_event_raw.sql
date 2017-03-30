@@ -3,17 +3,12 @@ USE _scout17_;
 INSERT event
 (name, code, week)
 VALUES
-('Auburn Mountainview Event', 'WAAMV', 1);
+('Finger Lakes Regional', 'NYRO', 3);
 
 INSERT event
 (name, code, week)
 VALUES
-('Palmetto Regional', 'SCMB', 1);
-
-INSERT event
-(name, code, week)
-VALUES
-('New York City Regional', 'NYNY', 2);
+('Hudson Valley Regional', 'NYSU', 4);
 
 INSERT event
 (name, code, week)
